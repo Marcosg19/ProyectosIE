@@ -1,5 +1,5 @@
 import math
-archivo = open('Tarea1.txt','w')
+
 
 import psycopg2
 #Conexión a base de datos
@@ -401,7 +401,7 @@ def factorial():
             archivo.write('\nNúmero ingresado: ' + str(x))
             detener_f1 = False
             if x %7 != 0:
-                print('Ingresar un número divible entre 7... ')
+                print('ERROR: El número ingresado no es divible entre 7. Ingresé nuevamente un número... ')
                 detener_f1 = True
         except ValueError:
             print('Caracter invalido...')
@@ -539,6 +539,8 @@ def calculadora_areas():
                     print('\nIngrese una opción válida')
                     input()
 
+
+#Ejercicio 12
 def notas():
     detenera = True
     detenerb = True
@@ -591,7 +593,6 @@ def notas():
             print('Caracter invalido...')
             detenerc = True
 
-
     resultado_promedio = (a+b+c)/3
 
     if resultado_promedio >= 60:
@@ -605,6 +606,181 @@ def notas():
         print('Reprobado')
         archivo.write('\nReprobado')
 
+#Ejercicio 13
+def año_bisiesto():
+    detener_ab1 = True
+    archivo.write('\n')
+    while detener_ab1:
+        try:
+            k=int(input('\nIngrese año de nacimiento: '))
+            archivo.write('\nAño: ' + str(k))
+            detener_ab1 = False
+            if k < 0:
+                print('Ingrese otro año...')
+                detener_ab1 = True
+        except ValueError:
+            print('Caracter invalido...')
+            detener_ab1 = True
+    if k % 400 == 0:
+        archivo.write('\nEl año si fue bisiesto ')
+        return print(f'\nEl año {k} si fue bisiesto')
+
+    elif k % 100 == 0:
+        archivo.write('\nEl año no fue bisiesto ')
+        return print(f'\nEl año {k} no fue bisiesto')
+
+    elif k % 4 == 0:
+        archivo.write('\nEl año si fue bisiesto ')
+        return print(f'\nEl año {k} si fue bisiesto')
+
+    else:
+        archivo.write('\n:El año no fue bisiesto ')
+        return print(f'\nEl año {k} no fue bisiesto')
+
+
+#Ejercicio 14
+def grupo_taxis():
+    detener_gt1 = True
+    detener_gt2 = True
+    archivo.write('\n')
+    while detener_gt1:
+        try:
+            mod=int(input('\nIngrese modelo del taxi (Año): '))
+            archivo.write('\nModelo: ' + str(mod))
+            detener_gt1 = False
+            if mod < 1970:
+                print('Modelo muy antiguo...')
+                detener_gt1 = True
+            elif mod > 2022:
+                print('Modelo no existente...')
+                detener_gt1 = True 
+        except ValueError:
+            print('Caracter invalido...')
+            detener_gt1 = True
+
+    
+    while detener_gt2:
+        try:
+            km=int(input('\nIngrese kilometraje del taxi: '))
+            archivo.write('\nKilometraje: ' + str(km))
+            detener_gt2 = False
+            if km < 0:
+                print('Kilometraje invalido...')
+                detener_gt2 = True
+        except ValueError:
+            print('Caracter invalido...')
+            detener_gt2= True
+
+    if mod < 2007:
+        if km > 20000:
+            print('\nDebe renovarse')
+        else:
+            print('\nMécanico')
+            
+
+    if 2007 <= mod <= 2013:
+        if km >= 20000:
+            print('\nRecibir mantenimiento')
+        else:
+            print('\nMécanico')
+
+    if mod > 2013:
+        if km < 10000:
+            print('\nÓptimas condiciones')
+        else:
+            print('\nMécanico')
+
+
+#MENÚ PRINCIPAL
+
+detenerprogramas= True
+while detenerprogramas:
+    archivo = open('Tarea1.txt','w')
+    print('\n\tPROGRAMAS DE TAREA PREPARATORIA 1')
+    print('\nMENÚ')
+    print('\n1. Número más grande')
+    print('2. Divisores de un número')
+    print('3. Cuantas vocales tiene una palabra')
+    print('4. Suma de los números desde 0 hasta ese número')
+    print('5. Número de inicio y fin')   
+    print('6. Cúal es el mayor y lista de mayor a menor ')
+    print('7. Cuantas veces aparece cada vocal ')
+    print('8. Números impares hasta 100')
+    print('9. Tipo de triángulo')
+    print('10. Factorial de un número divisible entre 7')
+    print('11. Calculadora de áreas de figuras geométricas')
+    print('12. Promedio')
+    print('13. Verificar año bisiesto')
+    print('14. Grupo de taxis')
+    print('15. Salir')  
+
+    opcionb = opciones()
+
+    if opcionb == 1:
+        ejercicio1()
+        input()
+
+    elif opcionb == 2:
+        divisores()
+        input()
+
+    elif opcionb == 3:
+        conteo_vocales()
+        input()
+
+    elif opcionb == 4:
+        suma_consecutiva()
+        input()
+
+    elif opcionb == 5:
+        inicio_fin()
+        input()
+
+    elif opcionb == 6:
+        mayor()
+        input()
+
+    elif opcionb == 7:
+        veces_vocales()
+        input()
+
+    elif opcionb == 8:
+        impares()
+        input()
+
+    elif opcionb == 9:
+        triangulo()
+        input()
+
+    elif opcionb == 10:
+        factorial()
+        input()
+
+    elif opcionb == 11:
+        calculadora_areas()
+        input()
+
+    elif opcionb == 12:
+        notas()
+        input()
+
+    elif opcionb == 13:
+        año_bisiesto()
+        input()
+
+    elif opcionb == 14:
+        grupo_taxis()
+        input()
+
+    elif opcionb == 15:
+        print('\n>>>>>>CERRANDO PROGRAMA<<<<<<\n')
+        detenerprogramas = False
+
+    else:
+        print('\nIngrese una opción válida')
+        input()
+
+
 #ejercicio1()
 #divisores()
 #conteo_vocales()
@@ -617,6 +793,8 @@ def notas():
 #factorial()
 #calculadora_areas()
 #notas()
+#año_bisiesto()
+#grupo_taxis()
 
 cursor.close()
 conexion.close()
