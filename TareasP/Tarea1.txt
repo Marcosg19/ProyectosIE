@@ -1,6 +1,4 @@
 
 
-Primer número: 6
-Segundo número: 5
-Tercer número: 2
-Triángulo escaleno
+Año: 2008
+El año si fue bisiesto 

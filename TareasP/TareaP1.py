@@ -1,3 +1,4 @@
+from calendar import c
 import math
 
 import psycopg2
@@ -8,7 +9,7 @@ try:
         port = "5432",
         user = "postgres",
         password = "marcos2001",
-        dbname = "proyectosIE"  
+        dbname = "Tarea1_proyectosIE"  
     )
     print('Conexión exitosa con la base de datos')
 except psycopg2.Error as e:
@@ -64,56 +65,82 @@ def ejercicio1():
             detenerc = True
 
     if a > b > c:
-        print('\nLa suma de los tres números es: ', a+b+c)
-        archivo.write('\nLa suma es: ' + str(a+b+c))    
+        resultado = a+b+c
+        print('\nLa suma de los tres números es: ', resultado)
+        archivo.write('\nLa suma es: ' + str(a+b+c))
+        cursor.execute("INSERT INTO ejercicio1(primernumero, segundonumero, tercernumero, operacion, resultado) VALUES(%s,%s,%s,'Suma',%s);",(a,b,c,resultado))
+        conexion.commit()    
 
     elif a > c > b:
-        print('\nLa suma de los tres números es: ', a+b+c)
+        resultado = a+b+c
+        print('\nLa suma de los tres números es: ', resultado)
         archivo.write('\nLa suma es: ' + str(a+b+c))
+        cursor.execute("INSERT INTO ejercicio1(primernumero, segundonumero, tercernumero, operacion, resultado) VALUES(%s,%s,%s,'Suma',%s);",(a,b,c,resultado))
+        conexion.commit()
 
     elif b > a > c: 
-        print('\nLa multiplicación de los tres números es: ', a*b*c)
+        resultado = a*b*c
+        print('\nLa multiplicación de los tres números es: ', resultado)
         archivo.write('\nLa multiplicación es: ' + str(a*b*c))
+        cursor.execute("INSERT INTO ejercicio1(primernumero, segundonumero, tercernumero, operacion, resultado) VALUES(%s,%s,%s,'Multiplicación',%s);",(a,b,c,resultado))
+        conexion.commit()
 
     elif b > c > a: 
-        print('\nLa multiplicación de los tres números es: ', a*b*c)
+        resultado = a*b*c
+        print('\nLa multiplicación de los tres números es: ', resultado)
         archivo.write('\nLa multiplicación es: ' + str(a*b*c))
+        cursor.execute("INSERT INTO ejercicio1(primernumero, segundonumero, tercernumero, operacion, resultado) VALUES(%s,%s,%s,'Multiplicación',%s);",(a,b,c,resultado))
+        conexion.commit()
 
 
     elif c > a > b:
         conc_a = (str(a)+ ',')
         conc_b = (str(b)+ ',')
         conc_c = (str(c)) 
-        concatenacion = conc_a + conc_b + conc_c
-        print('\nLa concatenación de los números es: ' , concatenacion)
-        archivo.write('\nLa multiplicación es: ' + str(a*b*c))
+        resultado = conc_a + conc_b + conc_c
+        print('\nLa concatenación de los números es: ' , resultado)
+        archivo.write('\nLa concatenación es: ' + str(resultado))
+        cursor.execute("INSERT INTO ejercicio1(primernumero, segundonumero, tercernumero, operacion, resultado) VALUES(%s,%s,%s,'Concatenación',%s);",(a,b,c,resultado))
+        conexion.commit()
 
     elif c > b > a:
         conc_a = (str(a)+ ',')
         conc_b = (str(b)+ ',')
         conc_c = (str(c)) 
-        concatenacion = conc_a + conc_b + conc_c
-        print('\nLa concatenación de los números es: ' , concatenacion)
-        archivo.write('\nLa concatenación es: ' + str(concatenacion))
+        resultado = conc_a + conc_b + conc_c
+        print('\nLa concatenación de los números es: ' , resultado)
+        archivo.write('\nLa concatenación es: ' + str(resultado))
+        cursor.execute("INSERT INTO ejercicio1(primernumero, segundonumero, tercernumero, operacion, resultado) VALUES(%s,%s,%s,'Concatenación',%s);",(a,b,c,resultado))
+        conexion.commit()
 
     elif a == b != c: 
-        print('\nAl ser iguales el primer y segundo número se muestra el tercero: ', c)
-        archivo.write('\nAl ser iguales el primer y segundo número se muestra el tercero: ' + str(c))
+        resultado = c
+        print('\nAl ser iguales el primer y segundo número se muestra el tercero: ', resultado)
+        archivo.write('\nAl ser iguales el primer y segundo número se muestra el tercero: ' + str(resultado))
+        cursor.execute("INSERT INTO ejercicio1(primernumero, segundonumero, tercernumero, operacion, resultado) VALUES(%s,%s,%s,'Se muestra el tercer número',%s);",(a,b,c,resultado))
+        conexion.commit()
 
 
     elif a == c != b: 
-        print('\nAl ser iguales el primer y tercer número se muestra el segundo: ', b)
-        archivo.write('\nAl ser iguales el primer y tercer número se muestra el segundo: ' + str(b))
+        resultado = b
+        print('\nAl ser iguales el primer y tercer número se muestra el segundo: ', resultado)
+        archivo.write('\nAl ser iguales el primer y tercer número se muestra el segundo: ' + str(resultado))
+        cursor.execute("INSERT INTO ejercicio1(primernumero, segundonumero, tercernumero, operacion, resultado) VALUES(%s,%s,%s,'Se muestra el segundo número',%s);",(a,b,c,resultado))
+        conexion.commit()
 
     elif b == c != a: 
-        print('\nAl ser iguales el segundo y tercer número se muestra el primero: ', a)
-        archivo.write('\nAl ser iguales el segundo y tercer número se muestra el primero: ' + str(a))
+        resultado = a
+        print('\nAl ser iguales el segundo y tercer número se muestra el primero: ', resultado)
+        archivo.write('\nAl ser iguales el segundo y tercer número se muestra el primero: ' + str(resultado))
+        cursor.execute("INSERT INTO ejercicio1(primernumero, segundonumero, tercernumero, operacion, resultado) VALUES(%s,%s,%s,'Se muestra el primer número',%s);",(a,b,c,resultado))
+        conexion.commit()
 
     elif a == b == c: 
         print('\n',(a, b, c))
         print('Todos son iguales\n')
         archivo.write('\nTodos son iguales: ' + str(a)+ ',' + str(b) + ',' + str(c))
-
+        cursor.execute("INSERT INTO ejercicio1(primernumero, segundonumero, tercernumero, operacion, resultado) VALUES(%s,%s,%s,'Se muestra un mensaje','Todos son iguales');",(a,b,c))
+        conexion.commit()
 
 #Segundo Ejercicio
 def divisores():
@@ -131,6 +158,8 @@ def divisores():
 
     print('Divisores: ', resultado_div)
     archivo.write('\nDivisores: ' + str(resultado_div))
+    cursor.execute("INSERT INTO divisores(primernumero, resultado) VALUES(%s,%s);",(d,resultado_div))
+    conexion.commit()
 
 #Tercer Ejercicio
 def conteo_vocales():
@@ -148,7 +177,9 @@ def conteo_vocales():
             detenercv1 = True
 
     print("\nLa palabra "+ str(v) +" tiene" ,str(len(resultado))+ ' vocales '+ str(resultado))
-    archivo.write('\nLa palabra '+ str(v) +' tiene ' + str(len(resultado))+ ' vocales')
+    archivo.write('\nLa palabra '+ str(v) +' tiene ' + str(len(resultado))+ ' vocales '+ str(resultado))
+    cursor.execute("INSERT INTO conteo_vocales(palabra, vocales, conteo) VALUES(%s,%s,%s);",(v,resultado,len(resultado)))
+    conexion.commit()
 
 #Cuarto Ejercicio
 def suma_consecutiva():
@@ -171,6 +202,8 @@ def suma_consecutiva():
 
     print('\nResultado: ', s)
     archivo.write('\nResultado: ' + str(s))
+    cursor.execute("INSERT INTO suma_consecutiva(numero, resultado) VALUES(%s,%s);",(f,s))
+    conexion.commit()
 
 #Quinto Ejercicio
 def inicio_fin():
@@ -199,17 +232,23 @@ def inicio_fin():
         resultado_if= [i for i in range(h, g-1, -2) if i%1==0]
         print('\nResultado: ',str(resultado_if))
         archivo.write('\nResultado: ' + str(resultado_if))
+        cursor.execute("INSERT INTO inicio_fin(numeroinicio, numerofin, resultado) VALUES(%s,%s,%s);",(h,g,resultado_if))
+        conexion.commit()
 
     elif h < g:
         resultado_if2= [i for i in range(h, g+1, 2) if i%1==0]
         print('\nResultado: ',str(resultado_if2))
         archivo.write('\nResultado: ' + str(resultado_if2))
+        cursor.execute("INSERT INTO inicio_fin(numeroinicio, numerofin, resultado) VALUES(%s,%s,%s);",(h,g,resultado_if2))
+        conexion.commit()
 
     elif h == g:
         resultado_if3= [i for i in range(h, g+1) if i%1==0]
         print('\nResultado: ',str(resultado_if3))
         print('El número de inicio es el mismo que el fin')
         archivo.write('\nEl numero de inicio es el mismo que el fin ' )
+        cursor.execute("INSERT INTO inicio_fin(numeroinicio, numerofin, resultado) VALUES(%s,%s,'El número de inicio y fin es el mismo');",(h,g))
+        conexion.commit()
 
 
 #Sexto Ejercicio
@@ -239,16 +278,21 @@ def mayor():
         resultado_m= [i for i in range(m, n-1, -1) if i%1==0]
         print('\nResultado: ',str(resultado_m))
         archivo.write('\nResultado: ' + str(resultado_m))
+        cursor.execute("INSERT INTO mayor(primernumero, segundonumero, resultado) VALUES(%s,%s,%s);",(m,n,resultado_m))
+        conexion.commit()
 
     elif m<n:
         resultado_n= [i for i in range(n, m-1, -1) if i%1==0]
         print('\nResultado: ',str(resultado_n))
         archivo.write('\nResultado: ' + str(resultado_n))
+        cursor.execute("INSERT INTO mayor(primernumero, segundonumero, resultado) VALUES(%s,%s,%s);",(m,n,resultado_n))
+        conexion.commit()
 
     elif m==n:
         print('\nLos números que ingresó son iguales ')
         archivo.write('\nLos números que ingresó son iguales ')
-        
+        cursor.execute("INSERT INTO mayor(primernumero, segundonumero, resultado) VALUES(%s,%s,'Los números que ingresó son iguales');",(m,n))
+        conexion.commit()
 
 #Septimo Ejercicio
 def veces_vocales():
@@ -279,17 +323,28 @@ def veces_vocales():
     print("\nLa palabra "+ str(v) +" tiene" ,str(len(resultado_cv))+ ' vocales '+ str(resultado_cv) )
     archivo.write('\nLa palabra '+ str(v) +' tiene ' + str(len(resultado_cv))+ ' vocales')
 
-    print('\na: ',cantidad_a+cantidad_A)
+    vocal_a = cantidad_a + cantidad_A
+    print('\na: ',vocal_a)
     archivo.write('\na: '+ str(cantidad_a+cantidad_A))
-    print('e: ',cantidad_e+cantidad_E)
+
+    vocal_e = cantidad_e + cantidad_E
+    print('e: ',vocal_e)
     archivo.write('\ne: '+ str(cantidad_e+cantidad_E))
-    print('i: ',cantidad_i+cantidad_I)
+
+    vocal_i = cantidad_i + cantidad_I
+    print('i: ',vocal_i)
     archivo.write('\ni: '+ str(cantidad_i+cantidad_I))
-    print('o: ',cantidad_o+cantidad_O)
+
+    vocal_o = cantidad_o + cantidad_O
+    print('o: ',vocal_o)
     archivo.write('\no: '+ str(cantidad_o+cantidad_O))
-    print('u: ',cantidad_u+cantidad_U)
+
+    vocal_u = cantidad_u + cantidad_U
+    print('u: ',vocal_u)
     archivo.write('\nu: '+ str(cantidad_u+cantidad_U))
 
+    cursor.execute("INSERT INTO veces_vocales(palabra, vocal_a, vocal_e, vocal_i, vocal_o, vocal_u) VALUES(%s,%s,%s,%s,%s,%s);",(v,vocal_a,vocal_e,vocal_i,vocal_o,vocal_u))
+    conexion.commit()
 
 #Octavo Ejercicio
 def impares():
@@ -300,7 +355,11 @@ def impares():
     print('\nHistorial de número impares del 1 al 100:\n',str(resultado_if))
     print('\nHay',str(len(resultado_if))+ ' números impares')
     archivo.write('\nResultado: ' + str(resultado_if))
-    archivo.write('Hay',str(len(resultado_if))+ ' números impares')
+    archivo.write(f'\nHay {(len(resultado_if))} números impares')
+    '''
+    cursor.execute("INSERT INTO impares(historial, cantidad) VALUES(%s,%s);",(resultado_if,len(resultado_if)))
+    conexion.commit()
+    '''
 
 #Noveno Ejercicio
 def triangulo():
@@ -355,61 +414,36 @@ def triangulo():
             print('Caracter invalido...')
             detener_t3 = True 
 
-    if p > q > r:
-        print('\nTriángulo escaleno ')
-        archivo.write('\nTriángulo escaleno')
 
-    elif p > r > q:
-        print('\nTriángulo escaleno ')
-        archivo.write('\nTriángulo escaleno')
+    if p == r != q:
+        print('\nTriángulo isósceles ')
+        archivo.write('\nTriángulo isósceles')
+        cursor.execute("INSERT INTO triangulo(lado_a, lado_b, lado_c, resultado) VALUES(%s,%s,%s,'Triángulo isósceles');",(p,q,r))
+        conexion.commit()    
 
-    elif q > p > r:
+    elif p != q != r:
         print('\nTriángulo escaleno ')
         archivo.write('\nTriángulo escaleno')
-
-    elif q > r > p:
-        print('\nTriángulo escaleno ')
-        archivo.write('\nTriángulo escaleno')
-
-    elif r > p > q:
-        print('\nTriángulo escaleno ')
-        archivo.write('\nTriángulo escaleno')
-
-    elif r > q > p:
-        print('\nTriángulo escaleno ')
-        archivo.write('\nTriángulo escaleno')
-
-    elif q > p > r:
-        print('\nTriángulo escaleno ')
-        archivo.write('\nTriángulo escaleno')
+        cursor.execute("INSERT INTO triangulo(lado_a, lado_b, lado_c, resultado) VALUES(%s,%s,%s,'Triángulo escaleno');",(p,q,r))
+        conexion.commit()
 
     elif p == q == r:
         print('\nTriángulo equilátero ')
         archivo.write('\nTriángulo equilátero')
+        cursor.execute("INSERT INTO triangulo(lado_a, lado_b, lado_c, resultado) VALUES(%s,%s,%s,'Triángulo equilatero');",(p,q,r))
+        conexion.commit()
 
-    elif p == q > r:
+    elif p == q != r:
         print('\nTriángulo isósceles ')
         archivo.write('\nTriángulo isósceles')
+        cursor.execute("INSERT INTO triangulo(lado_a, lado_b, lado_c, resultado) VALUES(%s,%s,%s,'Triángulo isósceles');",(p,q,r))
+        conexion.commit()
 
-    elif p == q < r:
+    elif q == r != p:
         print('\nTriángulo isósceles ')
         archivo.write('\nTriángulo isósceles')
-
-    elif p == r < q:
-        print('\nTriángulo isósceles ')
-        archivo.write('\nTriángulo isósceles')
-
-    elif p == r > q:
-        print('\nTriángulo isósceles ')
-        archivo.write('\nTriángulo isósceles')
-
-    elif q == r > p:
-        print('\nTriángulo isósceles ')
-        archivo.write('\nTriángulo isósceles')
-
-    elif q == r < p:
-        print('\nTriángulo isósceles ')
-        archivo.write('\nTriángulo isósceles')
+        cursor.execute("INSERT INTO triangulo(lado_a, lado_b, lado_c, resultado) VALUES(%s,%s,%s,'Triángulo isósceles');",(p,q,r))
+        conexion.commit()
 
 
 #Decimo ejercicio
@@ -437,6 +471,9 @@ def factorial():
         print(f"Factorial de {x} es:",fact)
         archivo.write(f"\nFactorial de {x} es:"+str(fact))
 
+    cursor.execute("INSERT INTO factorial(numero, resultado) VALUES(%s,%s);",(x,fact))
+    conexion.commit()
+
 
 #Ejercicio 11
 def area_circulo():
@@ -453,6 +490,9 @@ def area_circulo():
 
     print('El área es: ',math.pi*r**2)
     archivo.write("\nEl área es: "+str(math.pi*r**2))
+    cursor.execute("INSERT INTO calculadora_areas(figura, base, altura, radio, area) VALUES('Círculo',0,0,%s,%s);",(r,math.pi*r**2))
+    conexion.commit()
+    input()
 
 def area_triangulo():
     detener_at1 = True
@@ -478,6 +518,9 @@ def area_triangulo():
 
     print('El área es: ',(b*h)/2)
     archivo.write("\nEl área es: "+str((b*h)/2))
+    cursor.execute("INSERT INTO calculadora_areas(figura, base, altura, radio, area) VALUES('Triángulo',%s,%s,0,%s);",(b,h,(b*h)/2))
+    conexion.commit()
+    input()
     
 def area_cuadrado():
     detener_ac1 = True
@@ -493,6 +536,9 @@ def area_cuadrado():
 
     print('El área es: ',l**2)
     archivo.write("\nEl área es: "+str(l**2))
+    cursor.execute("INSERT INTO calculadora_areas(figura, base, altura, radio, area) VALUES('Cuadrado',%s,%s,0,%s);",(l,l,l**2))
+    conexion.commit()
+    input()
 
 def area_rectangulo():
     detener_ar1 = True
@@ -518,6 +564,20 @@ def area_rectangulo():
 
     print('El área es: ',b*h)
     archivo.write("\nEl área es: "+str(b*h))
+    cursor.execute("INSERT INTO calculadora_areas(figura, base, altura, radio, area) VALUES('Rectangulo',%s,%s,0,%s);",(b,h,b*h))
+    conexion.commit()
+    input()
+
+def historial():
+    print('\nHISTORIAL DE BASE DE DATOS')
+    print('\nEjemplo \n[(Figura, Base, Altura, Radio, Área)]') 
+    SQL = 'SELECT*FROM calculadora_areas;'
+    cursor.execute(SQL)
+    valores = cursor.fetchall()
+    print()
+    print(valores)
+    print()
+    input()  
 
 def calculadora_areas():
         print('\nENTRAR A CALCULADORA DE AREAS')
@@ -550,7 +610,7 @@ def calculadora_areas():
                     area_rectangulo()
 
             elif opcion_ca == 5:
-                    print()
+                    historial()
 
             elif opcion_ca == 6:
                     print('\n>>>CERRANDO PROGRAMA<<<\n')
@@ -569,8 +629,8 @@ def notas():
     archivo.write('\n')
     while detenera:
         try:
-            a=int(input('\nIngrese primer número: '))
-            archivo.write('\nPrimer número: ' + str(a))
+            a=int(input('\nIngrese primera calificación: '))
+            archivo.write('\nPrimera nota: ' + str(a))
             detenera = False
             if a < 0:
                 print('Calificación invalida...')
@@ -585,8 +645,8 @@ def notas():
     
     while detenerb:
         try:
-            b=int(input('\nIngrese segundo número: '))
-            archivo.write('\nSegundo número: ' + str(b))
+            b=int(input('\nIngrese segunda calificación: '))
+            archivo.write('\nSegunda nota: ' + str(b))
             detenerb = False
             if b < 0:
                 print('Calificación invalida...')
@@ -601,8 +661,8 @@ def notas():
 
     while detenerc:
         try:
-            c=int(input('\nIngrese tercer número: '))
-            archivo.write('\nTercer número: ' + str(c))
+            c=int(input('\nIngrese tercera calificación: '))
+            archivo.write('\nTercera nota: ' + str(c))
             detenerc = False
             if c < 0:
                 print('Calificación invalida...')
@@ -621,11 +681,16 @@ def notas():
         archivo.write('\nPromedio: ' + str(resultado_promedio))
         print('\nAprobado')
         archivo.write('\nAprobado')
+        cursor.execute("INSERT INTO notas(nota1, nota2, nota3, promedio, mensaje) VALUES(%s,%s,%s,%s,'Aprobado');",(a,b,c,resultado_promedio))
+        conexion.commit()
+
     else:
         print('\nPromedio: ',resultado_promedio)
         archivo.write('\nPromedio: ' + str(resultado_promedio))
         print('\nReprobado')
         archivo.write('\nReprobado')
+        cursor.execute("INSERT INTO notas(nota1, nota2, nota3, promedio, mensaje) VALUES(%s,%s,%s,%s,'Reprobado');",(a,b,c,resultado_promedio))
+        conexion.commit()
 
 #Ejercicio 13
 def año_bisiesto():
@@ -642,22 +707,56 @@ def año_bisiesto():
         except ValueError:
             print('Caracter invalido...')
             detener_ab1 = True
-    if k % 400 == 0:
-        archivo.write('\nEl año si fue bisiesto ')
-        return print(f'\nEl año {k} si fue bisiesto')
+    
+    if k < 2022:    
+        if k % 400 == 0:
+            archivo.write('\nEl año si fue bisiesto ')
+            cursor.execute("INSERT INTO bisiesto(nacimiento, mensaje) VALUES(%s,'Si fue año bisiesto');",(k,))
+            conexion.commit()
+            return print(f'\nEl año {k} si fue bisiesto')
 
-    elif k % 100 == 0:
-        archivo.write('\nEl año no fue bisiesto ')
-        return print(f'\nEl año {k} no fue bisiesto')
+        elif k % 100 == 0:
+            archivo.write('\nEl año no fue bisiesto ')
+            cursor.execute("INSERT INTO bisiesto(nacimiento, mensaje) VALUES(%s,'No fue año bisiesto');",(k,))
+            conexion.commit()
+            return print(f'\nEl año {k} no fue bisiesto')
 
-    elif k % 4 == 0:
-        archivo.write('\nEl año si fue bisiesto ')
-        return print(f'\nEl año {k} si fue bisiesto')
+        elif k % 4 == 0:
+            archivo.write('\nEl año si fue bisiesto ')
+            cursor.execute("INSERT INTO bisiesto(nacimiento, mensaje) VALUES(%s,'Si fue año bisiesto');",(k,))
+            conexion.commit()
+            return print(f'\nEl año {k} si fue bisiesto')
 
-    else:
-        archivo.write('\n:El año no fue bisiesto ')
-        return print(f'\nEl año {k} no fue bisiesto')
+        else:
+            archivo.write('\n:El año no fue bisiesto ')
+            cursor.execute("INSERT INTO bisiesto(nacimiento, mensaje) VALUES(%s,'No fue año bisiesto');",(k,))
+            conexion.commit()
+            return print(f'\nEl año {k} no fue bisiesto')
 
+    if k >= 2022:
+        if k % 400 == 0:
+            archivo.write('\nEl año si será bisiesto ')
+            cursor.execute("INSERT INTO bisiesto(nacimiento, mensaje) VALUES(%s,'Si será año bisiesto');",(k,))
+            conexion.commit()
+            return print(f'\nEl año {k} si será bisiesto')
+
+        elif k % 100 == 0:
+            archivo.write('\nEl año no será bisiesto ')
+            cursor.execute("INSERT INTO bisiesto(nacimiento, mensaje) VALUES(%s,'No será año bisiesto');",(k,))
+            conexion.commit()
+            return print(f'\nEl año {k} no será bisiesto')
+
+        elif k % 4 == 0:
+            archivo.write('\nEl año si será bisiesto ')
+            cursor.execute("INSERT INTO bisiesto(nacimiento, mensaje) VALUES(%s,'Si será año bisiesto');",(k,))
+            conexion.commit()
+            return print(f'\nEl año {k} si será bisiesto')
+
+        else:
+            archivo.write('\n:El año no será bisiesto ')
+            cursor.execute("INSERT INTO bisiesto(nacimiento, mensaje) VALUES(%s,'No será año bisiesto');",(k,))
+            conexion.commit()
+            return print(f'\nEl año {k} no será bisiesto')
 
 #Ejercicio 14
 def grupo_taxis():
@@ -695,21 +794,39 @@ def grupo_taxis():
     if mod < 2007:
         if km > 20000:
             print('\nDebe renovarse')
+            archivo.write('\nDebe renovarse')
+            cursor.execute("INSERT INTO grupo_taxis(modelo, kilometraje, mensaje) VALUES(%s,%s,'Debe renovarse');",(mod,km))
+            conexion.commit()
         else:
             print('\nMécanico')
+            archivo.write('\nMécanico')
+            cursor.execute("INSERT INTO grupo_taxis(modelo, kilometraje, mensaje) VALUES(%s,%s,'Mécanico');",(mod,km))
+            conexion.commit()
             
 
     if 2007 <= mod <= 2013:
         if km >= 20000:
             print('\nRecibir mantenimiento')
+            archivo.write('\nRecibir mantenimiento')
+            cursor.execute("INSERT INTO grupo_taxis(modelo, kilometraje, mensaje) VALUES(%s,%s,'Recibir mantenimiento');",(mod,km))
+            conexion.commit()
         else:
             print('\nMécanico')
+            archivo.write('\nMécanico')
+            cursor.execute("INSERT INTO grupo_taxis(modelo, kilometraje, mensaje) VALUES(%s,%s,'Mécanico');",(mod,km))
+            conexion.commit()
 
     if mod > 2013:
         if km < 10000:
             print('\nÓptimas condiciones')
+            archivo.write('\nÓptimas condiciones')
+            cursor.execute("INSERT INTO grupo_taxis(modelo, kilometraje, mensaje) VALUES(%s,%s,'Óptimas condiciones');",(mod,km))
+            conexion.commit()
         else:
             print('\nMécanico')
+            archivo.write('\nMécanico')
+            cursor.execute("INSERT INTO grupo_taxis(modelo, kilometraje, mensaje) VALUES(%s,%s,'Mécanico');",(mod,km))
+            conexion.commit()
 
 
 #MENÚ PRINCIPAL
@@ -813,22 +930,6 @@ while detenerprogramas:
     else:
         print('\nIngrese una opción válida')
         input()
-
-
-#ejercicio1()
-#divisores()
-#conteo_vocales()
-#suma_consecutiva()
-#inicio_fin()
-#mayor()
-#veces_vocales()
-#impares()
-#triangulo()
-#factorial()
-#calculadora_areas()
-#notas()
-#año_bisiesto()
-#grupo_taxis()
 
 cursor.close()
 conexion.close()
