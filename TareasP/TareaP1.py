@@ -1,3 +1,4 @@
+import math
 archivo = open('Tarea1.txt','w')
 
 import psycopg2
@@ -17,6 +18,18 @@ except psycopg2.Error as e:
 
 
 cursor = conexion.cursor()
+
+#Función para pedir opciones a menú principal
+def opciones():
+    detenerop = False
+    num = 0
+    while not detenerop:
+        try:
+            detenerop = True    
+            num = int(input('\nIngrese una opción: '))
+        except ValueError:
+            print('\nSeleccione una opción valida')
+    return num
 
 #Primer Ejercicio
 def ejercicio1():
@@ -278,8 +291,319 @@ def impares():
     archivo.write('\nResultado: ' + str(resultado_if))
 
 #Noveno Ejercicio
+def triangulo():
+    detener_t1 = True
+    detener_t2 = True
+    detener_t3 = True
+    archivo.write('\n')
+    while detener_t1:
+        try:
+            p=int(input('\nIngrese primer número: '))
+            archivo.write('\nPrimer número: ' + str(p))
+            detener_t1 = False
+            if p < 1:
+                print('Ingresar un número positivo... ')
+                detener_t1 = True
+        except ValueError:
+            print('Caracter invalido...')
+            detener_t1 = True
+        
+
+    while detener_t2:
+        try:
+            q=int(input('\nIngrese segundo número: '))
+            archivo.write('\nSegundo número: ' + str(q))
+            detener_t2 = False
+            if q < 1:
+                print('Ingresar un número positivo... ')
+                detener_t2 = True
+        except ValueError:
+            print('Caracter invalido...')
+            detener_t2 = True 
+        
+
+    while detener_t3:
+        try:
+            r=int(input('\nIngrese tercer número: '))
+            archivo.write('\nTercer número: ' + str(r))
+            detener_t3 = False
+            if r < 1:
+                print('Ingresar un número positivo... ')
+                detener_t3 = True
+        except ValueError:
+            print('Caracter invalido...')
+            detener_t3 = True 
+
+    if p > q > r:
+        print('\nTriángulo escaleno ')
+        archivo.write('\nTriángulo escaleno')
+
+    elif p > r > q:
+        print('\nTriángulo escaleno ')
+        archivo.write('\nTriángulo escaleno')
+
+    elif q > p > r:
+        print('\nTriángulo escaleno ')
+        archivo.write('\nTriángulo escaleno')
+
+    elif q > r > p:
+        print('\nTriángulo escaleno ')
+        archivo.write('\nTriángulo escaleno')
+
+    elif r > p > q:
+        print('\nTriángulo escaleno ')
+        archivo.write('\nTriángulo escaleno')
+
+    elif r > q > p:
+        print('\nTriángulo escaleno ')
+        archivo.write('\nTriángulo escaleno')
+
+    elif q > p > r:
+        print('\nTriángulo escaleno ')
+        archivo.write('\nTriángulo escaleno')
+
+    elif p == q == r:
+        print('\nTriángulo equilátero ')
+        archivo.write('\nTriángulo equilátero')
+
+    elif p == q > r:
+        print('\nTriángulo isósceles ')
+        archivo.write('\nTriángulo isósceles')
+
+    elif p == q < r:
+        print('\nTriángulo isósceles ')
+        archivo.write('\nTriángulo isósceles')
+
+    elif p == r < q:
+        print('\nTriángulo isósceles ')
+        archivo.write('\nTriángulo isósceles')
+
+    elif p == r > q:
+        print('\nTriángulo isósceles ')
+        archivo.write('\nTriángulo isósceles')
+
+    elif q == r > p:
+        print('\nTriángulo isósceles ')
+        archivo.write('\nTriángulo isósceles')
+
+    elif q == r < p:
+        print('\nTriángulo isósceles ')
+        archivo.write('\nTriángulo isósceles')
 
 
+#Decimo ejercicio
+def factorial():
+    detener_f1 = True
+    archivo.write('\n')
+    while detener_f1:
+        try:
+            x=int(input('\nIngrese un número: '))
+            archivo.write('\nNúmero ingresado: ' + str(x))
+            detener_f1 = False
+            if x %7 != 0:
+                print('Ingresar un número divible entre 7... ')
+                detener_f1 = True
+        except ValueError:
+            print('Caracter invalido...')
+            detener_f1 = True
+        
+
+    if x%7 == 0:
+        fact=1
+        if x>=0:
+            for i in range(1, x+1):
+                fact=fact*i
+        print(f"Factorial de {x} es:",fact)
+        archivo.write(f"\nFactorial de {x} es:"+str(fact))
+
+
+#Ejercicio 11
+def area_circulo():
+    detener_ac = True
+    archivo.write('\n')
+    while detener_ac:
+        try:
+            r=float(input('\nIngrese el valor de radio: '))
+            archivo.write('\nPrimer número: ' + str(r))
+            detener_ac = False
+        except ValueError:
+            print('Caracter invalido...')
+            detener_ac = True
+
+    print('El área es: ',math.pi*r**2)
+    archivo.write("\nEl área es: "+str(math.pi*r**2))
+
+def area_triangulo():
+    detener_at1 = True
+    detener_at2 = True
+    archivo.write('\n')
+    while detener_at1:
+        try:
+            b=float(input('\nIngrese el valor de base: '))
+            archivo.write('\nPrimer número: ' + str(b))
+            detener_at1 = False
+        except ValueError:
+            print('Caracter invalido...')
+            detener_at1 = True
+
+    while detener_at2:
+        try:
+            h=float(input('\nIngrese el valor de altura: '))
+            archivo.write('\nPrimer número: ' + str(h))
+            detener_at2 = False
+        except ValueError:
+            print('Caracter invalido...')
+            detener_at2 = True
+
+    print('El área es: ',(b*h)/2)
+    archivo.write("\nEl área es: "+str((b*h)/2))
+    
+def area_cuadrado():
+    detener_ac1 = True
+    archivo.write('\n')
+    while detener_ac1:
+        try:
+            l=float(input('\nIngrese el valor de L: '))
+            archivo.write('\nPrimer número: ' + str(l))
+            detener_ac1 = False
+        except ValueError:
+            print('Caracter invalido...')
+            detener_ac1 = True
+
+    print('El área es: ',l**2)
+    archivo.write("\nEl área es: "+str(l**2))
+
+def area_rectangulo():
+    detener_ar1 = True
+    detener_ar2 = True
+    archivo.write('\n')
+    while detener_ar1:
+        try:
+            b=float(input('\nIngrese el valor de base: '))
+            archivo.write('\nPrimer número: ' + str(b))
+            detener_ar1 = False
+        except ValueError:
+            print('Caracter invalido...')
+            detener_ar1 = True
+
+    while detener_ar2:
+        try:
+            h=float(input('\nIngrese el valor de altura: '))
+            archivo.write('\nPrimer número: ' + str(h))
+            detener_ar2 = False
+        except ValueError:
+            print('Caracter invalido...')
+            detener_ar2 = True
+
+    print('El área es: ',b*h)
+    archivo.write("\nEl área es: "+str(b*h))
+
+def calculadora_areas():
+        print('\nENTRAR A CALCULADORA DE AREAS')
+        input()
+        detener_w = True
+        while detener_w:
+            print('\n      CALCULADORA DE AREAS')
+            print('-------------------------------')
+            print('Opciones para calcular área')
+            print('\n1. Circulo ')
+            print('2. Triángulo')
+            print('3. Cuadrado')
+            print('4. Rectángulo')
+            print('5. Ver historial')
+            print('6. Salir')
+                        
+
+            opcion_ca = opciones()
+
+            if opcion_ca == 1:
+                    area_circulo()
+
+            elif opcion_ca == 2:
+                    area_triangulo()
+
+            elif opcion_ca == 3:
+                    area_cuadrado()
+
+            elif opcion_ca == 4:
+                    area_rectangulo()
+
+            elif opcion_ca == 5:
+                    print()
+
+            elif opcion_ca == 6:
+                    print('\n>>>CERRANDO PROGRAMA<<<\n')
+                    detener_w = False
+
+            else:
+                    print('\nIngrese una opción válida')
+                    input()
+
+def notas():
+    detenera = True
+    detenerb = True
+    detenerc = True
+    archivo.write('\n')
+    while detenera:
+        try:
+            a=int(input('\nIngrese primer número: '))
+            archivo.write('\nPrimer número: ' + str(a))
+            detenera = False
+            if a < 0:
+                print('Calificación invalida...')
+                detenera = True
+            elif a > 100:
+                print('Calificación invalida...')
+                detenera = True 
+        except ValueError:
+            print('Caracter invalido...')
+            detenera = True
+
+    
+    while detenerb:
+        try:
+            b=int(input('\nIngrese segundo número: '))
+            archivo.write('\nSegundo número: ' + str(b))
+            detenerb = False
+            if b < 0:
+                print('Calificación invalida...')
+                detenerb = True
+            elif b > 100:
+                print('Calificación invalida...')
+                detenerb = True 
+        except ValueError:
+            print('Caracter invalido...')
+            detenerb= True
+
+
+    while detenerc:
+        try:
+            c=int(input('\nIngrese tercer número: '))
+            archivo.write('\nTercer número: ' + str(c))
+            detenerc = False
+            if c < 0:
+                print('Calificación invalida...')
+                detenerc = True
+            elif c > 100:
+                print('Calificación invalida...')
+                detenerc = True             
+        except ValueError:
+            print('Caracter invalido...')
+            detenerc = True
+
+
+    resultado_promedio = (a+b+c)/3
+
+    if resultado_promedio >= 60:
+        print('\nPromedio: ',resultado_promedio)
+        archivo.write('\nPromedio: ' + str(resultado_promedio))
+        print('Aprobado')
+        archivo.write('\nAprobado')
+    else:
+        print('\nPromedio: ',resultado_promedio)
+        archivo.write('\nPromedio: ' + str(resultado_promedio))
+        print('Reprobado')
+        archivo.write('\nReprobado')
 
 #ejercicio1()
 #divisores()
@@ -289,6 +613,10 @@ def impares():
 #mayor()
 #veces_vocales()
 #impares()
+#triangulo()
+#factorial()
+#calculadora_areas()
+#notas()
 
 cursor.close()
 conexion.close()

@@ -1,0 +1,8 @@
+
+
+Número entero ingresado: 6
+Resultado: 21
+
+Primer número: 5
+Segundo número: 6
+Tercer número: 6
