@@ -1,4 +1,9 @@
 
 
-Año: 2008
-El año si fue bisiesto 
+Primera nota: 300
+Primera nota: 60
+Segunda nota: 60
+Tercera nota: 900
+Tercera nota: 60
+Promedio: 60.0
+Aprobado

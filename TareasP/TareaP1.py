@@ -829,6 +829,170 @@ def grupo_taxis():
             conexion.commit()
 
 
+
+def menu_triangulo():
+    detenertr= True
+    while detenertr:
+        print('\n\tTipo de triángulo')
+        print('\nOpciones')
+        print('1. Abrir programa ')
+        print('2. Historial')
+        print('3. Regresar')
+
+        opciontr = opciones()
+
+        if opciontr == 1:
+            print('Tipo de triángulo')
+            print('\nINSTRUCCIONES: Ingrese tres números.\nSi el primero es el más grande obtiene la suma de los tres.\nSi el segundo es el más grande obtiene la multiplicación de los tres.\nSi el tercero es el más grande se concatenan los tres.\nSi hay dos iguales se muestra el único que no es igual.\nSi los tres son iguales obtiene el mensaje: Todos son iguales.')
+            triangulo()
+            input()
+
+        elif opciontr == 2:
+            cursor.execute('SELECT*FROM triangulo;')
+            valorestr = cursor.fetchall()
+            print()
+            print(valorestr)
+            input()
+
+        elif opciontr == 3:
+            print('\nRegresando...')
+            detenertr = False
+
+        else:
+            print('\nIngrese una opción válida')
+            input()
+
+
+def menu_factorial():
+    detenertr= True
+    while detenertr:
+        print('\n\tFactorial de un número divisible entre 7')
+        print('\nOpciones')
+        print('1. Abrir programa ')
+        print('2. Historial')
+        print('3. Regresar')
+
+        opciontr = opciones()
+
+        if opciontr == 1:
+            print('Factorial de un número divisible entre 7')
+            print('\nINSTRUCCIONES: Factorial de un número si y solo sí este es divible entre 7.')
+            factorial()
+            input()
+
+        elif opciontr == 2:
+            cursor.execute('SELECT*FROM factorial;')
+            valorestr = cursor.fetchall()
+            print()
+            print(valorestr)
+            input()
+
+        elif opciontr == 3:
+            print('\nRegresando...')
+            detenertr = False
+
+        else:
+            print('\nIngrese una opción válida')
+            input()
+
+
+def menu_notas():
+    detenernt= True
+    while detenernt:
+        print('\n\tPromedio')
+        print('\nOpciones')
+        print('1. Abrir programa ')
+        print('2. Historial')
+        print('3. Regresar')
+
+        opcionnt = opciones()
+
+        if opcionnt == 1:
+            print('Promedio')
+            print('\nINSTRUCCIONES: Ingrese tres números enteros positivos, obtenga el promedio y un mensaje si esta aprobado(Mayor o igual a 60) o reprobado.')
+            notas()
+            input()
+
+        elif opcionnt == 2:
+            cursor.execute('SELECT*FROM notas;')
+            valoresnt = cursor.fetchall()
+            print()
+            print(valoresnt)
+            input()
+
+        elif opcionnt == 3:
+            print('\nRegresando...')
+            detenernt = False
+
+        else:
+            print('\nIngrese una opción válida')
+            input()
+
+
+def menu_bisiesto():
+    detenerbs= True
+    while detenerbs:
+        print('\n\tVerificar año bisiesto')
+        print('\nOpciones')
+        print('1. Abrir programa ')
+        print('2. Historial')
+        print('3. Regresar')
+
+        opcionbs = opciones()
+
+        if opcionbs == 1:
+            print('Verificar año bisiesto')
+            print('\nINSTRUCCIONES: Ingrese su año de nacimiento y obtenga si fue año bisiesto')
+            año_bisiesto()
+            input()
+
+        elif opcionbs == 2:
+            cursor.execute('SELECT*FROM bisiesto;')
+            valoresbs = cursor.fetchall()
+            print()
+            print(valoresbs)
+            input()
+
+        elif opcionbs == 3:
+            print('\nRegresando...')
+            detenerbs = False
+
+        else:
+            print('\nIngrese una opción válida')
+            input()
+
+def menu_taxis():
+    detenertx= True
+    while detenertx:
+        print('\n\tGrupo de taxis')
+        print('\nOpciones')
+        print('1. Abrir programa ')
+        print('2. Historial')
+        print('3. Regresar')
+
+        opciontx = opciones()
+
+        if opciontx == 1:
+            print('Información - Grupo de taxis')
+            grupo_taxis()
+            input()
+
+        elif opciontx == 2:
+            cursor.execute('SELECT*FROM grupo_taxis;')
+            valorestx = cursor.fetchall()
+            print()
+            print(valorestx)
+            input()
+
+        elif opciontx == 3:
+            print('\nRegresando...')
+            detenertx = False
+
+        else:
+            print('\nIngrese una opción válida')
+            input()
+
+
 #MENÚ PRINCIPAL
 
 detenerprogramas= True
@@ -895,33 +1059,23 @@ while detenerprogramas:
         input()
 
     elif opcionb == 9:
-        print('\nINSTRUCCIONES: Ingrese tres números. Los tres números corresponden a los lados de un triángulo.\nObtenga que tipo de triángulo es respecto al tamaño de sus lados.\nCuando: A=B=C - Triángulo equilatero\n\tA=B!=C - Triángulo isósceles\n\tA!=B!=C - Triángulo escaleno')
-        triangulo()
-        input()
+        menu_triangulo()
 
     elif opcionb == 10:
-        print('\nINSTRUCCIONES: Factorial de un número si y solo sí este es divible entre 7.')
-        factorial()
-        input()
+        menu_factorial()
 
     elif opcionb == 11:
         calculadora_areas()
         input()
 
     elif opcionb == 12:
-        print('\nINSTRUCCIONES: Ingrese tres números enteros positivos, obtenga el promedio y un mensaje si esta aprobado(Mayor o igual a 60) o reprobado.')
-        notas()
-        input()
+        menu_notas()
 
     elif opcionb == 13:
-        print('\nINSTRUCCIONES: Ingrese su año de nacimiento y obtenga si fue año bisiesto')
-        año_bisiesto()
-        input()
+        menu_bisiesto()
 
     elif opcionb == 14:
-        print('\nGRUPO DE TAXIS')
-        grupo_taxis()
-        input()
+        menu_taxis()
 
     elif opcionb == 15:
         print('\n>>>>>>CERRANDO PROGRAMAS DE TAREA PREPARATORIA 1<<<<<<\n')
