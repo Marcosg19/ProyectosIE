@@ -1,6 +1,5 @@
 import math
 
-
 import psycopg2
 #Conexión a base de datos
 try:
@@ -196,10 +195,22 @@ def inicio_fin():
             print('Caracter invalido...')
             detener_if2 = True 
 
-    resultado_if= [i for i in range(h, g+1, 2) if i%1==0]
-    
-    print('\nResultado: ',str(resultado_if))
-    archivo.write('\nResultado: ' + str(resultado_if))
+    if h > g:
+        resultado_if= [i for i in range(h, g-1, -2) if i%1==0]
+        print('\nResultado: ',str(resultado_if))
+        archivo.write('\nResultado: ' + str(resultado_if))
+
+    elif h < g:
+        resultado_if2= [i for i in range(h, g+1, 2) if i%1==0]
+        print('\nResultado: ',str(resultado_if2))
+        archivo.write('\nResultado: ' + str(resultado_if2))
+
+    elif h == g:
+        resultado_if3= [i for i in range(h, g+1) if i%1==0]
+        print('\nResultado: ',str(resultado_if3))
+        print('El número de inicio es el mismo que el fin')
+        archivo.write('\nEl numero de inicio es el mismo que el fin ' )
+
 
 #Sexto Ejercicio
 def mayor():
@@ -289,6 +300,7 @@ def impares():
     print('\nHistorial de número impares del 1 al 100:\n',str(resultado_if))
     print('\nHay',str(len(resultado_if))+ ' números impares')
     archivo.write('\nResultado: ' + str(resultado_if))
+    archivo.write('Hay',str(len(resultado_if))+ ' números impares')
 
 #Noveno Ejercicio
 def triangulo():
@@ -301,8 +313,11 @@ def triangulo():
             p=int(input('\nIngrese primer número: '))
             archivo.write('\nPrimer número: ' + str(p))
             detener_t1 = False
-            if p < 1:
+            if p < 0:
                 print('Ingresar un número positivo... ')
+                detener_t1 = True
+            if p == 0:
+                print('No puede ser 0...')
                 detener_t1 = True
         except ValueError:
             print('Caracter invalido...')
@@ -314,8 +329,11 @@ def triangulo():
             q=int(input('\nIngrese segundo número: '))
             archivo.write('\nSegundo número: ' + str(q))
             detener_t2 = False
-            if q < 1:
+            if q < 0:
                 print('Ingresar un número positivo... ')
+                detener_t2 = True
+            if q == 0:
+                print('No puede ser 0...')
                 detener_t2 = True
         except ValueError:
             print('Caracter invalido...')
@@ -327,8 +345,11 @@ def triangulo():
             r=int(input('\nIngrese tercer número: '))
             archivo.write('\nTercer número: ' + str(r))
             detener_t3 = False
-            if r < 1:
+            if r < 0:
                 print('Ingresar un número positivo... ')
+                detener_t3 = True
+            if r == 0:
+                print('No puede ser 0...')
                 detener_t3 = True
         except ValueError:
             print('Caracter invalido...')
@@ -598,12 +619,12 @@ def notas():
     if resultado_promedio >= 60:
         print('\nPromedio: ',resultado_promedio)
         archivo.write('\nPromedio: ' + str(resultado_promedio))
-        print('Aprobado')
+        print('\nAprobado')
         archivo.write('\nAprobado')
     else:
         print('\nPromedio: ',resultado_promedio)
         archivo.write('\nPromedio: ' + str(resultado_promedio))
-        print('Reprobado')
+        print('\nReprobado')
         archivo.write('\nReprobado')
 
 #Ejercicio 13
@@ -717,42 +738,52 @@ while detenerprogramas:
     opcionb = opciones()
 
     if opcionb == 1:
+        print('\nINSTRUCCIONES: Ingrese tres números.\nSi el primero es el más grande obtiene la suma de los tres.\nSi el segundo es el más grande obtiene la multiplicación de los tres.\nSi el tercero es el más grande se concatenan los tres.\nSi hay dos iguales se muestra el único que no es igual.\nSi los tres son iguales obtiene el mensaje: Todos son iguales.')
         ejercicio1()
         input()
 
     elif opcionb == 2:
+        print('\nINSTRUCCIONES: Ingrese un número para mostrar sus divisores.')
         divisores()
         input()
 
     elif opcionb == 3:
+        print('\nINSTRUCCIONES: Ingrese una palabra para mostrar cuantas vocales tiene.')
         conteo_vocales()
         input()
 
     elif opcionb == 4:
+        print('\nINSTRUCCIONES: Ingrese un número y obtenga la suma de los número desde 0 hasta ese número.')
         suma_consecutiva()
         input()
 
     elif opcionb == 5:
+        print('\nINSTRUCCIONES: Ingrese dos número y obtenga los números de 2 en 2 desde el número de inicio hasta el número de fin.')
         inicio_fin()
         input()
 
     elif opcionb == 6:
+        print('\nINSTRUCCIONES: Ingrese dos número, y se verifica cual es el mayor y se muestra una lista de mayor a menor.')
         mayor()
         input()
 
     elif opcionb == 7:
+        print('\nINSTRUCCIONES: Ingrese una palabra y obtenga el conteo de cada vocal')
         veces_vocales()
         input()
 
     elif opcionb == 8:
+        print('\nINSTRUCCIONES: Números impares desde el 1 hasta el 100')
         impares()
         input()
 
     elif opcionb == 9:
+        print('\nINSTRUCCIONES: Ingrese tres números. Los tres números corresponden a los lados de un triángulo.\nObtenga que tipo de triángulo es respecto al tamaño de sus lados.\nCuando: A=B=C - Triángulo equilatero\n\tA=B!=C - Triángulo isósceles\n\tA!=B!=C - Triángulo escaleno')
         triangulo()
         input()
 
     elif opcionb == 10:
+        print('\nINSTRUCCIONES: Factorial de un número si y solo sí este es divible entre 7.')
         factorial()
         input()
 
@@ -761,19 +792,22 @@ while detenerprogramas:
         input()
 
     elif opcionb == 12:
+        print('\nINSTRUCCIONES: Ingrese tres números enteros positivos, obtenga el promedio y un mensaje si esta aprobado(Mayor o igual a 60) o reprobado.')
         notas()
         input()
 
     elif opcionb == 13:
+        print('\nINSTRUCCIONES: Ingrese su año de nacimiento y obtenga si fue año bisiesto')
         año_bisiesto()
         input()
 
     elif opcionb == 14:
+        print('\nGRUPO DE TAXIS')
         grupo_taxis()
         input()
 
     elif opcionb == 15:
-        print('\n>>>>>>CERRANDO PROGRAMA<<<<<<\n')
+        print('\n>>>>>>CERRANDO PROGRAMAS DE TAREA PREPARATORIA 1<<<<<<\n')
         detenerprogramas = False
 
     else:
