@@ -1,4 +1,0 @@
-
-
-Número entero ingresado: -2
-Divisores: []
